@@ -51,3 +51,11 @@ def listar_gastos(db_path=DB_PATH):
         return conn.execute(
             "SELECT * FROM gastos ORDER BY fecha DESC, id DESC"
         ).fetchall()
+
+def resumen_por_categoria(db_path=DB_PATH):
+    """Devuelve un resumen de gastos por categoría."""
+    with closing(get_connection(db_path)) as conn:
+        return conn.execute(
+            "SELECT categoria, SUM(monto) AS total "
+            "FROM gastos GROUP BY categoria ORDER BY total DESC"
+        ).fetchall()    
