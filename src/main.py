@@ -3,6 +3,7 @@ from src.database import (
     agregar_gasto,
     listar_gastos,
     resumen_por_categoria,
+    eliminar_gasto,
 )
 
 
